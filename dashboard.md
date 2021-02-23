@@ -56,9 +56,9 @@ On macOS navigate to http://localhost:8001/api/v1/namespaces/kubernetes-dashboar
 
 ## Teardown
 
-``sh
+```sh
 cat << 'END' | ssh -T k1
 kubectl -n kubernetes-dashboard delete serviceaccount admin-user
 kubectl -n kubernetes-dashboard delete clusterrolebinding admin-user
 END
-``
+```
