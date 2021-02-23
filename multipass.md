@@ -116,7 +116,7 @@ for vm in k1 k2 k3; do
   ssh $vm sudo systemctl start docker
 
   # Automatically start docker after boot:
-  ./rsh-all sudo systemctl enable docker
+  ssh $vm sudo systemctl enable docker
 
 done
 ```
