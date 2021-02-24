@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Installation:
+#
+#   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/appliedblockchain/k8s/HEAD/scripts/multipass-k8s-setup.sh)"
+#
+
 set -Eeuo pipefail
 
 vms="k1 k2 k3"
