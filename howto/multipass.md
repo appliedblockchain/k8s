@@ -157,10 +157,7 @@ done
 
 Initialise head node:
 ```sh
-ssh k1 sudo kubeadm init \
-  --pod-network-cidr 10.244.0.0/16 \
-  --apiserver-advertise-address 192.168.64.6 \
-  --apiserver-cert-extra-sans k1
+ssh k1 sudo kubeadm init
 ```
 
 Join k2 and k3 to the cluster (token and cert hash will be shown at the end of above step):
@@ -182,16 +179,18 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 END
 ```
 
-Comment out `--port: 0` part in the following files on k1:
-```text
-/etc/kubernetes/manifests/kube-controller-manager.yaml
-/etc/kubernetes/manifests/kube-scheduler.yaml
+Remove `--port: 0` part in the following files on k1:
+```sh
+ssh -T k1 << 'END'
+for name in /etc/kubernetes/manifests/kube-controller-manager.yaml /etc/kubernetes/manifests/kube-scheduler.yaml; do
+  sudo sed -i '/--port=0/d' $name
+done
+END
 ```
 
 Use flannel for cluster networking:
 ```sh
-ssh k1 'curl https://rawgit.com/coreos/flannel/master/Documentation/kube-flannel.yml > kube-flannel.yaml'
-ssh k1 kubectl apply -f kube-flannel.yaml
+ssh k1 kubectl apply -f https://rawgit.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
 Eventually cluster should be ready:
