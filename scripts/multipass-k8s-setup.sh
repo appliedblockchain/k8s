@@ -79,7 +79,7 @@ multipass shell k1 << 'END'
 
   # Make kubectl available to the current user:
   mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo cp /etc/kubernetes/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
   # Drop --port=0:
