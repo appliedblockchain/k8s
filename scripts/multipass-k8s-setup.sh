@@ -33,6 +33,23 @@ for vm in $vms; do
 END
 done
 
+if [ -f ~/.ssh/id_rsa.pub ]; then
+  echo "will copy ssh id"
+  for vm in $vms; do
+    cat ~/.ssh/id_rsa.pub | pbcopy
+    multipass shell $vm << END
+      if [ ! -d ~/.ssh ]; then
+        mkdir ~/.ssh
+        chmod 0700 ~/.ssh
+      fi
+      echo "$(pbpaste)" >> ~/.ssh/authorized_keys
+      chmod 0600 ~/.ssh/authorized_keys
+END
+  done
+fi
+
+# TODO: ssh -o StrictHostKeyChecking=accept-new k1-3
+
 echo "will add apt sources"
 for vm in $vms; do
   multipass shell $vm << 'END'
