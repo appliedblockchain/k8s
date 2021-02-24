@@ -1,4 +1,3 @@
-
 ## Task
 
 Run pod named `run-pod-once` once. Pod should sleep for 10 seconds and exit successfully.
@@ -6,7 +5,6 @@ Run pod named `run-pod-once` once. Pod should sleep for 10 seconds and exit succ
 ## Solution
 
 As pod:
-
 ```sh
 kubectl apply -f - << 'END'
 apiVersion: v1
@@ -23,7 +21,6 @@ END
 ```
 
 As job:
-
 ```sh
 kubectl apply -f - << 'END'
 apiVersion: batch/v1
