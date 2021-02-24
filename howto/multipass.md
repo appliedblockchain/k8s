@@ -157,7 +157,7 @@ done
 
 Initialise head node:
 ```sh
-ssh k1 sudo kubeadm init
+ssh k1 sudo kubeadm init --pod-network-cidr 10.244.0.0/16
 ```
 
 Join k2 and k3 to the cluster (token and cert hash will be shown at the end of above step):

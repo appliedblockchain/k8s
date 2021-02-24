@@ -75,7 +75,7 @@ echo "will initialise container"
 multipass shell k1 << 'END'
 
   # Initialise container:
-  sudo kubeadm init
+  sudo kubeadm init --pod-network-cidr 10.244.0.0/16
 
   # Make kubectl available to the current user:
   mkdir -p $HOME/.kube
