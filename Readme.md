@@ -7,6 +7,7 @@
   * [Run pod in namespace](./howto/run-pod-in-namespace.md)
   * [Run pod once](./howto/run-pod-once.md)
   * [Setup k8s cluster from scratch using multipass](./howto/multipass.md)
+  * [Claim volume](./howto/claim-volume.md)
 * [References](./references) - dry description describing concepts oriented towards information
 * [Tutorials](./tutorials) - lessons helping to get started oriented towards learning
 * [Explanations](./explanations) - discursive explanations oriented towards understanding
