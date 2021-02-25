@@ -45,10 +45,9 @@ if [ -f ~/.ssh/id_rsa.pub ]; then
       echo "$(pbpaste)" >> ~/.ssh/authorized_keys
       chmod 0600 ~/.ssh/authorized_keys
 END
+    ssh -o StrictHostKeyChecking=accept-new $vm
   done
 fi
-
-# TODO: ssh -o StrictHostKeyChecking=accept-new k1-3
 
 echo "will add apt sources"
 for vm in $vms; do
