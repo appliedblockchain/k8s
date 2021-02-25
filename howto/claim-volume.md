@@ -125,3 +125,12 @@ From macOS use curl or browser:
 ```sh
 curl -vv http://localhost:8001/api/v1/namespaces/default/services/claim-volume-srv/proxy/
 ```
+
+## Bonus
+
+Assuming pod was placed on k3:
+```
+ssh k3 sudo reboot
+```
+
+You can confirm that after temporary service downtime it will become available again, ie. the pod will come back as running.
