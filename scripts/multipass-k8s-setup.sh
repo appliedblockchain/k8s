@@ -12,7 +12,7 @@ vms="k1 k2 k3"
 echo "will delete $vms if they exist"
 for vm in $vms; do
   multipass stop $vm 2> /dev/null || echo "didn't stop $vm"
-  multipass delete $vm
+  multipass delete $vm 2> /dev/null || echo "didn't delete $vm"
 done
 multipass purge
 
@@ -45,7 +45,7 @@ if [ -f ~/.ssh/id_rsa.pub ]; then
       echo "$(pbpaste)" >> ~/.ssh/authorized_keys
       chmod 0600 ~/.ssh/authorized_keys
 END
-    ssh -o StrictHostKeyChecking=accept-new $vm
+    # ssh -o StrictHostKeyChecking=accept-new $vm
   done
 fi
 
@@ -105,6 +105,11 @@ multipass shell k1 << 'END'
 
   # Install flannel:
   kubectl apply -f https://rawgit.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+  # Setup k alias and bash completion:
+  echo 'source <(kubectl completion bash)' >> ~/.bashrc
+  echo 'alias k=kubectl' >> ~/.bashrc
+  echo 'complete -F __start_kubectl k' >> ~/.bashrc
 
 END
 
