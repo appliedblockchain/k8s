@@ -7,8 +7,12 @@ We'll use multipass to spawn 3 VMs from macOS host machine:
 2. `k2` – k8s worker
 3. `k3` - k8s worker
 
-Install multipass on macOS:
+Install multipass:
 ```sh
+# Ubuntu
+sudo snap install multipass
+
+# macOS
 brew install multipass
 ```
 
